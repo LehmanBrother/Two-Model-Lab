@@ -11,6 +11,29 @@ router.get('/', (req, res) => {
 	})
 })
 
-//new
+//new route
+router.get('/new', (req, res) => {
+	res.render('artists/new.ejs');
+})
+
+//show route
+router.get('/:index', (req, res) => {
+	Artist.findById(req.params.index, (err, foundArtist) => {
+		res.render('artists/show.ejs', {
+			artist: foundArtist
+		})
+	})
+})
+
+//post route
+router.post('/', (req, res) => {
+	Artist.create(req.body, (err, createdArtist) => {
+		if(err) {
+			console.log(err);
+		} else {
+			res.redirect('/artists');
+		}
+	})
+})
 
 module.exports = router;

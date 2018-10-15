@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Artist</title>
+</head>
+<body>
+	<header>
+		<h1>New Artist Page</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/artists">Artists</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<form action="/artists" method="POST">
+			Name: <input type="text" name="name"><br>
+			Genre: <input type="text" name="genre"><br>
+			Image: <input type="text" name="img"><br>
+			<button type="submit">Create Artist</button>
+		</form>
+	</main>
+
+</body>
+</html>
