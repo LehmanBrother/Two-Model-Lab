@@ -6,10 +6,13 @@ require('./db/db');
 
 const artistsController = require('./controllers/artists');
 
+const songsController = require('./controllers/songs');
+
 //middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use('/artists', artistsController);
+app.use('/songs', songsController);
 
 app.get('/', (req, res) => {
 	res.render('index.ejs');
