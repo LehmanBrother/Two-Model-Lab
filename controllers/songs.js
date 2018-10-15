@@ -57,4 +57,14 @@ router.put('/:index', (req, res) => {
 	})
 })
 
+router.delete('/:index', (req, res) => {
+	Songs.findOneAndDelete(req.params.index, (err, removeSong) => {
+		if(err){
+			console.log(err);
+		} else {
+			res.redirect('/songs')
+		}
+	})	
+})
+
 module.exports = router;
