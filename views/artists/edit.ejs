@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Artist Edit Page</title>
+</head>
+<body>
+	<header>
+		<h1>Artist Edit Page</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/artists">Artists Index</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<form action="/artists/<%=artist.id%>?_method=PUT" method="POST">
+			Name: <input type="text" name="name" value="<%=artist.name%>"><br>
+			Genre: <input type="text" name="genre" value="<%=artist.genre%>"><br>
+			Image: <input type="text" name="img" value="<%=artist.img%>"><br>
+			<input type="submit" value="Submit Edits">
+		</form>
+	</main>
+
+</body>
+</html>

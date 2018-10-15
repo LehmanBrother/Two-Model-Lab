@@ -47,4 +47,20 @@ router.delete('/:index', (req, res) => {
 	})
 })
 
+//edit route
+router.get('/:index/edit', (req, res) => {
+	Artist.findById(req.params.index, (err, editedArtist) => {
+		res.render('artists/edit.ejs', {
+			artist: editedArtist
+		});
+	})
+})
+
+//put route
+router.put('/:index', (req, res) => {
+	Artist.findByIdAndUpdate(req.params.index, req.body, (err, updatedArtist) => {
+		res.redirect('/artists');
+	})
+})
+
 module.exports = router;
