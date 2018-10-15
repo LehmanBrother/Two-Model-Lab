@@ -36,4 +36,15 @@ router.post('/', (req, res) => {
 	})
 })
 
+//delete route
+router.delete('/:index', (req, res) => {
+	Artist.findOneAndDelete(req.params.index, (err, deletedArtist) => {
+		if(err) {
+			console.log(err);
+		} else {
+			res.redirect('/artists');
+		}
+	})
+})
+
 module.exports = router;
