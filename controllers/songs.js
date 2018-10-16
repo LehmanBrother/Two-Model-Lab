@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const Songs = require('../models/songs');
+const Artists = require('../models/artists');
+
 
 // Index router
 router.get('/', (req, res) => {
@@ -14,8 +16,12 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-	res.render('songs/new.ejs')
-})
+	Artists.find({}, (err, allArtists) => {
+		res.render('songs/new.ejs', {
+			artists: allArtists
+		});
+	});
+});
 
 router.post('/', (req, res) => {
 	Songs.create(req.body, (err, newSong) => {
