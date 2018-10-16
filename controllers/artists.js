@@ -47,7 +47,9 @@ router.delete('/:index', (req, res) => {
 		if(err) {
 			console.log(err);
 		} else {
-			res.redirect('/artists');
+			Song.deleteMany({artist: deletedArtist.name}, (err, deletedSongs) => {
+				res.redirect('/artists');
+			})
 		}
 	})
 })

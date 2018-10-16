@@ -4,6 +4,10 @@ const Artist = require('./models/artists');
 const Songs = require('./models/songs');
 require('./db/db');
 
-Artist.findOne({name: 'Starset'}, (err, foundArtist) => {
-	console.log(foundArtist);
+// Artist.findOne({name: 'Starset'}, (err, foundArtist) => {
+// 	console.log(foundArtist);
+// })
+
+Songs.deleteMany({}, (err, deletedSongs) => {
+	console.log(deletedSongs);
 })
