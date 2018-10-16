@@ -60,8 +60,11 @@ router.get('/:index/edit', (req, res) => {
 		if(err){
 			console.log(err);
 		} else {
-			res.render('songs/edit.ejs', {
-				song: editSong
+			Artists.find({}, (err, allArtists) => {
+				res.render('songs/edit.ejs', {
+					song: editSong,
+					artists: allArtists
+				})
 			})
 		}
 	})
