@@ -18,6 +18,11 @@
 		<ul>
 			<li>Name: <%=artist.name%></li>
 			<li>Genre: <%=artist.genre%></li>
+			<ul>
+				<% for (let i = 0; i < songs.length; i++) { -%>
+					<li><a href="/songs/<%=songs[i].id%>"><%=songs[i].name%></a></li>
+				<% } -%>
+			</ul>
 		</ul>
 		<form action="/artists/<%=artist.id%>?_method=DELETE" method="POST">
 			<input type="submit" value="Delete Artist">
