@@ -69,7 +69,12 @@ router.get('/:index/edit', (req, res) => {
 // Put Route
 router.put('/:index', (req, res) => {
 	Songs.findByIdAndUpdate(req.params.index, req.body, (err, updateSong) => {
-		res.redirect('/songs')
+		Artists.findOne({name: updateSong.artist}, (err, updateArtist) => {
+			let songToUpdate = updateArtist.songs.id(updateSong.id)
+			songToUpdate = req.body;
+			updateArtist.save();
+			res.redirect('/songs')
+		})
 	})
 })
 // Delete Route
@@ -79,7 +84,6 @@ router.delete('/:index', (req, res) => {
 			console.log(err);
 		} else {
 			Artists.findOne({name: removeSong.artist}, (err, deleteArtist) => {
-				console.log(deleteArtist);
 				deleteArtist.songs.id(removeSong.id).remove();
 				deleteArtist.save();
 				res.redirect('/songs')
