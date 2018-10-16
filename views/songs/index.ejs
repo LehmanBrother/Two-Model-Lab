@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Songs Index</title>
+</head>
+<body>
+	<header>
+		<h1>Songs Index</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/songs/new">New</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<ul>
+			<% for (let i = 0; i < songs.length; i++) { -%>
+				<li><a href="songs/<%= songs[i].id%>"><%=songs[i].name%></a></li>
+			<% } -%>
+		</ul>
+	</main>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Song</title>
+</head>
+<body>
+	<header>
+		<h1>Edit <%=song.name%></h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/songs/index">Index Page</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<form action="/songs/<%=song.id%>?_method=PUT" method="POST">
+			Name: <input type="text" name="name" value="<%=song.name%>"><br>
+			Album Image: <input type="text" name="albumImg" value="<%=song.albumImg%>"><br>
+			<input type="submit" value="Submit Edits">
+		</form>
+	</main>
+
+</body>
+</html>

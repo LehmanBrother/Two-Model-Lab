@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Artist = require('../models/artists');
+const Song = require('../models/songs');
+
 
 //index route
 router.get('/', (req, res) => {
@@ -19,8 +21,11 @@ router.get('/new', (req, res) => {
 //show route
 router.get('/:index', (req, res) => {
 	Artist.findById(req.params.index, (err, foundArtist) => {
-		res.render('artists/show.ejs', {
-			artist: foundArtist
+		Song.find({artist: foundArtist.name}, (err, foundSongs) => {
+			res.render('artists/show.ejs', {
+				artist: foundArtist,
+				songs: foundSongs
+			})
 		})
 	})
 })
