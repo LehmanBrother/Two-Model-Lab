@@ -78,7 +78,12 @@ router.delete('/:index', (req, res) => {
 		if(err){
 			console.log(err);
 		} else {
-			res.redirect('/songs')
+			Artists.findOne({name: removeSong.artist}, (err, deleteArtist) => {
+				console.log(deleteArtist);
+				deleteArtist.songs.id(removeSong.id).remove();
+				deleteArtist.save();
+				res.redirect('/songs')
+			})
 		}
 	})	
 })
