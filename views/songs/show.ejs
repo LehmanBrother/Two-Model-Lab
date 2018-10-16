@@ -16,7 +16,8 @@
 	<main>
 		<a href="/songs/<%=song.id%>/edit">Edit Page</a>
 		<ul>
-			<li><%=song.name%></li>
+			<li>Song: <%=song.name%></li>
+			<li>Artist: <a href="/artists/<%=artist.id%>"><%=song.artist%></a></li>
 		</ul>
 		<form action="/songs/<%=song.id%>?_method=DELETE" method="POST">
 			<input type="submit" value="Delete Song">

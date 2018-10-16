@@ -45,8 +45,11 @@ router.get('/:index', (req, res) => {
 		if(err){
 			console.log(err);
 		} else {
-			res.render('songs/show.ejs', {
-				song: showSong
+			Artists.findOne({name: showSong.artist}, (err, foundArtist) => {
+				res.render('songs/show.ejs', {
+					song: showSong,
+					artist: foundArtist
+				})	
 			})
 		}
 	})
