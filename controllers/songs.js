@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 		});
 	});
 });
-
+// New Route
 router.get('/new', (req, res) => {
 	Artists.find({}, (err, allArtists) => {
 		res.render('songs/new.ejs', {
@@ -22,17 +22,24 @@ router.get('/new', (req, res) => {
 		});
 	});
 });
-
+// Post Route
 router.post('/', (req, res) => {
 	Songs.create(req.body, (err, newSong) => {
 		if(err) {
 			console.log(err);
 		} else {
+			console.log(req.body.artist);
+			Artists.findOne({name: req.body.artist}, (err, foundArtist) => {
+				foundArtist.songs.push(newSong)
+				foundArtist.save()
+				console.log(foundArtist);
+			})
+			console.log(newSong);
 			res.redirect('/songs')
 		}
 	})
 })
-
+// Show Route
 router.get('/:index', (req, res) => {
 	Songs.findById(req.params.index, (err, showSong) => {
 		if(err){
@@ -44,7 +51,7 @@ router.get('/:index', (req, res) => {
 		}
 	})
 })
-
+// Edit Route
 router.get('/:index/edit', (req, res) => {
 	Songs.findById(req.params.index, (err, editSong) => {
 		if(err){
