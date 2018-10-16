@@ -66,13 +66,13 @@ router.get('/:index/edit', (req, res) => {
 		}
 	})
 })
-
+// Put Route
 router.put('/:index', (req, res) => {
 	Songs.findByIdAndUpdate(req.params.index, req.body, (err, updateSong) => {
 		res.redirect('/songs')
 	})
 })
-
+// Delete Route
 router.delete('/:index', (req, res) => {
 	Songs.findOneAndDelete(req.params.index, (err, removeSong) => {
 		if(err){
