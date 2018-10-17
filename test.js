@@ -8,6 +8,14 @@ require('./db/db');
 // 	console.log(foundArtist);
 // })
 
-Songs.deleteMany({}, (err, deletedSongs) => {
-	console.log(deletedSongs);
+// Songs.deleteMany({name: 'telepathic'}, (err, deletedSongs) => {
+// 	console.log(deletedSongs);
+// })
+
+Songs.deleteMany({}, (err, foundSongs) => {
+	console.log(foundSongs);
+	// for(let i = 0; i < foundArtists.length; i++) {
+	// 	console.log(foundArtists[i].name);
+	// 	console.log(foundArtists[i].songs);
+	// }
 })
