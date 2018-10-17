@@ -58,11 +58,18 @@ router.delete('/:index', async (req, res) => {
 
 //edit route
 router.get('/:index/edit', async (req, res) => {
-	try {
-		const editedArtist = await Artist.findById(req.params.index);
-		res.render('artists/edit.ejs');
-	} catch(err) {
-		res.send(err);
+	if(req.session.logged) {
+		try {
+			const editedArtist = await Artist.findById(req.params.index);
+			res.render('artists/edit.ejs', {
+				artist: editedArtist
+			});
+		} catch(err) {
+			res.send(err);
+		}
+	} else {
+		req.session.message = 'Please log in to edit an artist.'
+		res.redirect('/auth/login');
 	}
 })
 
